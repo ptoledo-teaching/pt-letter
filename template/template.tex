@@ -1,0 +1,87 @@
+%%
+%% PT Letter Template - Parametrized Version
+%% Using parametrized commands for sender and recipient
+%%
+%% Author: Pedro Toledo Correa
+%% Version: 0.1
+%% Date: 2025-10-18
+%%
+
+\documentclass[spanish]{pt-letter}
+
+% Sender information
+\ptsendername{Luke Skywalker}
+\ptsenderaffiliation{Jedi Knight\\Rebel Alliance}
+\ptsenderaddress{Yavin IV Base, Outer Rim Territories}
+\ptsenderemail{luke.skywalker@rebelalliance.org}
+\ptsenderphone{+999 (0)4 ABY-JEDI}
+\ptsendersignature{figures/signature.png}
+
+% Recipient information
+\ptrecipientname{Obi-Wan Kenobi}
+\ptrecipientaffiliation{Jedi Master\\Former General of the Grand Army of the Republic}
+\ptrecipientaddress{Tatooine Desert, Dune Sea Region}
+\ptrecipientemail{ben.kenobi@jediorder.org}
+\ptrecipientphone{+999 (0)19 BBY-HIDE}
+
+% Letter location and date
+\ptletterlocation{Yavin IV}
+\ptletterdate{4 ABY}
+
+\begin{document}
+
+\opening{Estimado Maestro Kenobi,}
+
+Me dirijo a usted con gran entusiasmo para presentarle la \textbf{Suite PT de Templates LaTeX}, un conjunto de herramientas documentales que he desarrollado para facilitar la creación de documentos profesionales en la galaxia académica.
+
+Como bien sabe, durante mi entrenamiento Jedi aprendí que la claridad y la precisión son fundamentales, no solo en el manejo de la Fuerza, sino también en la comunicación escrita. Es por ello que he creado esta colección de plantillas que buscan estandarizar y mejorar la calidad de nuestros documentos.
+
+\subsection*{Componentes de la Suite PT}
+
+La suite está compuesta por los siguientes módulos:
+
+\begin{center}
+    \begin{tblr}{colspec={|l|c|c|}}
+        \hline
+        \tableheader
+        Componente              & Versión & Estado                              \\
+        \hline
+        \hline
+        \inlinecode{pt-commons} & v0.1    & \textcolor{ptgreen}{Activo}         \\
+        \hline
+        \inlinecode{pt-article} & v0.1    & \textcolor{ptgreen}{Activo}         \\
+        \hline
+        \inlinecode{pt-slides}  & v0.1    & \textcolor{ptgreen}{Activo}         \\
+        \hline
+        \inlinecode{pt-letter}  & v0.1    & \textcolor{ptgreen}{Activo}         \\
+        \hline
+        \inlinecode{pt-report}  & v0.1    & \textcolor{ptyellow}{En desarrollo} \\
+        \hline
+        \inlinecode{pt-book}    & v0.1    & \textcolor{ptyellow}{En desarrollo} \\
+        \hline
+    \end{tblr}
+\end{center}
+
+\subsection*{Características Principales}
+
+La suite ofrece las siguientes funcionalidades:
+
+\begin{itemize}
+    \item \textbf{Estandarización:} Todos los componentes comparten un estilo visual coherente
+    \item \textbf{Multiidioma:} Soporte para español, inglés, portugués y francés
+    \item \textbf{Tablas Avanzadas:} Integración con \inlinecode{tabularray} para tablas profesionales
+    \item \textbf{Código Fuente:} Resaltado de sintaxis con \inlinecode{minted}
+    \item \textbf{Matemáticas:} Soporte completo para ecuaciones con \inlinecode{amsmath}
+    \item \textbf{Gráficos:} Integración con \inlinecode{tikz} y \inlinecode{pgfplots}
+    \item \textbf{Control de Versiones:} Sistema integrado de versionado de documentos
+\end{itemize}
+
+Como puede apreciar en esta misma carta, el módulo \inlinecode{pt-letter} permite crear correspondencia formal con un diseño elegante y profesional, utilizando comandos parametrizados que simplifican enormemente el proceso.
+
+Maestro, creo que estas herramientas pueden ser de gran utilidad para la comunidad académica galáctica. Su sabiduría y experiencia serían invaluables para mejorar y expandir este proyecto.
+
+Quedo a su disposición para cualquier consulta o sugerencia que desee compartir. Que la Fuerza lo acompañe en sus proyectos documentales.
+
+Atte,
+
+\end{document}
