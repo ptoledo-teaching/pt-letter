@@ -269,6 +269,17 @@
     \SetWatermarkHorCenter{0.5\paperwidth}
 }
 
+% Sectioning format adjustments %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\titleformat{\section}
+{\normalfont\normalsize\bfseries}
+{\makebox[42pt][l]{\thesection.}}
+{0em}{}
+\titleformat{\subsection}
+{\normalfont\normalsize\bfseries}
+{\makebox[42pt][l]{\thesubsection.}}
+{0em}{}
+
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \AfterEndPreamble{
