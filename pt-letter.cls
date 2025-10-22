@@ -86,6 +86,13 @@
 \newcommand{\ptletterlocation}[1]{\def\pt@letterlocation{#1}}
 \newcommand{\ptletterdate}[1]{\def\pt@letterdate{#1}}
 
+% After signature
+\newcommand{\ptcc}[1]{\def\pt@cc{#1}}
+\newcommand{\ptencl}[1]{\def\pt@encl{#1}}
+\newcommand{\ptps}[1]{\def\pt@ps{#1}}
+
+% Letter components generation %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Sender information (top right) - parametrized version
 \newcommand{\ptfromsender}{%
     \begin{flushright}
@@ -192,40 +199,39 @@
     \end{flushright}
 }
 
-% Sender signature parameter (path to image file)
-\newcommand{\ptsendersignature}[1]{\def\pt@sendersignature{#1}}
 
-% Control flag for automatic closing generation
-\newif\ifpt@autoclosing\pt@autoclosingtrue
-% Command to disable automatic closing
-\newcommand{\ptsignaturenone}{\pt@autoclosingfalse}
-
-% Internal automatic closing command used by AtEndDocument
-\newcommand{\pt@autoclosing}{%
-    % Only generate if not disabled
-    \ifpt@autoclosing
-        \vfill
-        \par\noindent
-        \vspace{1.5em}
-        \begin{flushright}
-            % Signature image if provided (will overlap with the line below)
-            \ifdefined\pt@sendersignature
-                \makebox[0.33\textwidth][c]{%
-                    \includegraphics[width=0.333\paperwidth]{\pt@sendersignature}%
-                }%
-                \\[-1.0cm]%
-            \fi
-            \hspace*{1cm}\noindent\rule{0.33\textwidth}{0.1pt}\par
-            \vspace{0.3em}
-            % Close with sender name and affiliation if defined
-            \ifdefined\pt@sendername
-                \textbf{\pt@sendername}\\
-            \fi
-            \ifdefined\pt@senderaffiliation
-                \pt@senderaffiliation
-            \fi
-        \end{flushright}
+\newcommand{\cc}{
+    \ifdefined\pt@cc
+        \vspace{1em}
+        \par
+        \textbf{CC:} \pt@cc
     \fi
+}
+
+\newcommand{\encl}{
+    \ifdefined\pt@encl
+        \vspace{1em}
+        \par
+        \textbf{Encl:} \pt@encl
+    \fi
+}
+
+\newcommand{\ps}{
+    \ifdefined\pt@ps
+        \vspace{1em}
+        \par
+        \textbf{PS:} \pt@ps
+    \fi
+}
+
+\newcommand{\ptsignaturefull}{
+    \vspace{1em}
+    \par
+    \ptsignature
+    % Insert CC, Encl, PS blocks if defined
+    \cc
+    \encl
+    \ps
 }
 
 % Watermark %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
