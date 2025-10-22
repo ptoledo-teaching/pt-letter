@@ -46,18 +46,11 @@
 % Text width: 5.50in, centered horizontally
 % Left margin: (8.5 - 5.50) / 2 = 1.50in
 \geometry{
-    letterpaper,
-    textwidth=5.50in,
-    left=1.50in,
-    right=1.50in,
-    textheight=9.00in,
-    top=0.75in,
-    bottom=1.25in,
-    headheight=0pt,
-    headsep=0pt,
-    footskip=0pt,
-    marginparwidth=0pt,
-    marginparsep=0pt
+    left=84pt,
+    right=84pt,
+    top=84pt,
+    bottom=84pt,
+    includefoot
 }
 
 % Paragraph indentation
