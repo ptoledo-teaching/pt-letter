@@ -74,6 +74,7 @@
 \newcommand{\ptsenderaddress}[1]{\def\pt@senderaddress{#1}}
 \newcommand{\ptsenderemail}[1]{\def\pt@senderemail{#1}}
 \newcommand{\ptsenderphone}[1]{\def\pt@senderphone{#1}}
+\newcommand{\ptsenderlogo}[1]{\def\pt@senderlogo{#1}}
 
 % Recipient parameters
 \newcommand{\ptrecipientname}[1]{\def\pt@recipientname{#1}}
@@ -302,6 +303,12 @@
 
 % Automatic generation of letter components at document start
 \AtBeginDocument{%
+    \ifdefined\pt@senderlogo
+        \begin{flushleft}
+            \includegraphics[height=30pt]{\pt@senderlogo}
+        \end{flushleft}
+        \vspace{1em}
+    \fi
     % Generate sender block if not disabled
     \ifpt@autosender
         \ptfromsender
