@@ -157,7 +157,6 @@
     \vspace{1em}
 }
 
-% Legacy commands (manual version) - kept for backward compatibility
 % Sender information (top right)
 \newcommand{\fromsender}[1]{%
     \begin{flushright}
@@ -189,12 +188,11 @@
 }
 
 % Closing signature with optional image
-% Closing signature with optional image (legacy/manual)
 \newcommand{\closing}[2][]{%
     \vfill
     \begin{flushright}
         \ifx&#1&\else
-            \includegraphics[width=8cm]{#1}\\[-2em]
+        \includegraphics[width=8cm]{#1}\\[-2em]
         \fi
         #2
     \end{flushright}
