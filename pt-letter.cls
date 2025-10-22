@@ -53,11 +53,8 @@
     includefoot
 }
 
-% Paragraph indentation
-\setlength{\parindent}{2.00em}
-
-% Remove page numbers by default
-\pagestyle{empty}
+% Show fancy page style
+\pagestyle{fancy}
 
 % Letter structure commands %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
