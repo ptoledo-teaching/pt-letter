@@ -75,6 +75,7 @@
 \newcommand{\ptsenderemail}[1]{\def\pt@senderemail{#1}}
 \newcommand{\ptsenderphone}[1]{\def\pt@senderphone{#1}}
 \newcommand{\ptsenderlogo}[1]{\def\pt@senderlogo{#1}}
+\newcommand{\ptsendersignature}[1]{\def\pt@sendersignature{#1}}
 
 % Recipient parameters
 \newcommand{\ptrecipientname}[1]{\def\pt@recipientname{#1}}
@@ -188,16 +189,36 @@
 }
 
 % Closing signature with optional image
-\newcommand{\closing}[2][]{%
-    \vfill
-    \begin{flushright}
-        \ifx&#1&\else
-        \includegraphics[width=8cm]{#1}\\[-2em]
-        \fi
-        #2
-    \end{flushright}
+\newcommand{\closing}[1]{%
+    \vfill%
+    \begin{flushright}%
+        #1%
+    \end{flushright}%
 }
 
+\newcommand{\ptsignature}{%
+    \vfill
+    \par\noindent
+    \vspace{1.5em}
+    \begin{flushright}
+        % Signature image if provided (will overlap with the line below)
+        \ifdefined\pt@sendersignature
+            \makebox[0.33\textwidth][c]{%
+                \includegraphics[width=0.333\paperwidth]{\pt@sendersignature}%
+            }%
+            \\[-1.0cm]%
+        \fi
+        \hspace*{1cm}\noindent\rule{0.33\textwidth}{0.1pt}\par
+        \vspace{0.3em}
+        % Close with sender name and affiliation if defined
+        \ifdefined\pt@sendername
+            \textbf{\pt@sendername}\\
+        \fi
+        \ifdefined\pt@senderaffiliation
+            \pt@senderaffiliation
+        \fi
+    \end{flushright}
+}
 
 \newcommand{\cc}{
     \ifdefined\pt@cc
@@ -281,6 +302,11 @@
 
 % Hooks %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Control flag for automatic closing generation
+\newif\ifpt@autosignature\pt@autosignaturetrue
+% Command to disable automatic closing
+\newcommand{\ptautosignaturenone}{\pt@autosignaturefalse}
+
 \AfterEndPreamble{
     \ifdefined\pt@watermark
         \DraftwatermarkOptions{stamp=true}
@@ -323,12 +349,9 @@
 
 % Insert automatic closing at the end of the document unless disabled
 \AtEndDocument{%
-    % Only insert if closing is enabled
-    \ifpt@autoclosing
-        % Ensure vertical space to push signature toward the bottom
-        \vspace{1em}
-        \par
-        \pt@autoclosing
+    % Only insert full signature if not disabled
+    \ifpt@autosignature
+        \ptsignaturefull
     \fi
 }
 
